@@ -30,7 +30,6 @@ const keepRatio = (dom, config, debounceFn = debounce) => {
     dom.style.left = "50%";
     dom.style.top = "50%";
     dom.style.transform = "translate(-50%, -50%) scale(0)";
-    dom.style.aspectRatio = `${initW} / ${initH}`;
     dom.style.width = `${initW}px`;
     dom.style.height = `${initH}px`;
     setSize();
