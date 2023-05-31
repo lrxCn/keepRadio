@@ -11,7 +11,7 @@
         margin: 0;
         padding: 0;
       }
-      
+
       body {
         background-color: goldenrod;
         display: flex;
@@ -23,9 +23,10 @@
       }
 
       .container {
+        overflow: hidden;
         background-color: black;
-        width: 50vw;
-        height: 50vh;
+        width: 100vw;
+        height: 100vh;
       }
 
       .content {
@@ -34,30 +35,48 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        position: relative;
       }
 
       img {
         width: 100%;
       }
+
+      span {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        color: #fff;
+        background-color: blue;
+        transform: translate(-50%, -50%);
+      }
     </style>
   </head>
   <body>
-    <h4>需要包裹一层div</h1>
-    <h4>改变浏览器尺寸试试~~</h1>
+    <!-- <h4>需要包裹一层div</h1>
+    <h4>改变浏览器尺寸试试~~</h1> -->
 
     <div class="container">
       <div class="content" id="content">
         <img src="./assets/bg.jpeg" alt="" />
+        <span id="span"></span>
       </div>
     </div>
     <script>
       window.onload = () => {
         const content = document.getElementById("content");
-        const { init, onresize } = keepRatio(content, { 
+        const span = document.getElementById("span");
+
+        const { init, onresize } = keepRatio(content, {
           // 设计稿该模块的宽高
-          width: 900,
-          height: 1500 
+          width: 100,
+          height: 100,
+          getScale,
         });
+
+        function getScale(text) {
+          span.innerHTML = text;
+        }
       };
     </script>
   </body>

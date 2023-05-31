@@ -13,6 +13,7 @@ const keepRatio = (dom, config, debounceFn = debounce) => {
     duration = 200,
     debounceDuration = 500,
     isAuto = true,
+    getScale,
   } = config || {
     duration: 200,
     debounceDuration: 500,
@@ -22,6 +23,7 @@ const keepRatio = (dom, config, debounceFn = debounce) => {
     const { width, height } = dom.parentNode.getBoundingClientRect();
     const scale = Math.min(width / initW, height / initH);
     dom.style.transform = `translate(-50%, -50%) scale(${scale})`;
+    getScale?.(scale);
   };
 
   const init = () => {
@@ -40,7 +42,7 @@ const keepRatio = (dom, config, debounceFn = debounce) => {
 
   if (isAuto) {
     init();
-    window.addEventListener('resize', onresize)
+    window.addEventListener("resize", onresize);
   }
 
   return {
